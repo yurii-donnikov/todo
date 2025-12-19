@@ -1,36 +1,67 @@
 const db = require("../db/db");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
 
 class UserController {
   async createUser(req, res) {
     const { name, email, password } = req.body;
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
     const newPerson = await db.query(
       "INSERT INTO users (name, email, password) values ($1, $2, $3) RETURNING *",
-      [name, email, password]
+      [name, email, hashedPassword]
     );
     res.json(newPerson.rows[0]);
   }
+
   async getUsers(req, res) {
     const users = await db.query("SELECT * FROM users");
     res.json(users.rows);
   }
+
   async getUser(req, res) {
     const id = req.params.id;
     const users = await db.query("SELECT * FROM users where id = $1", [id]);
     res.json(users.rows);
   }
+
   async updateUser(req, res) {
     const { name, email, password } = req.body;
     const id = req.params.id;
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
     const users = await db.query(
       "UPDATE users set name = $1, email = $2, password = $3 where id = $4 RETURNING *",
-      [name, email, password, id]
+      [name, email, hashedPassword, id]
     );
     res.json(users.rows);
   }
+
   async deleteUser(req, res) {
     const id = req.params.id;
     const users = await db.query("DELETE from users where id = $1", [id]);
     res.json(users.rows);
+  }
+
+  async loginUser(req, res) {
+    const { email, password } = req.body;
+    const user = await db.query("SELECT * FROM users WHERE email = $1", [
+      email,
+    ]);
+
+    const match = await bcrypt.compare(password, user.rows[0].password);
+
+    if (match) {
+      const token = jwt.sign(
+        { userId: user.rows[0].id },
+        process.env.JWT_SECRET,
+        { expiresIn: "24h" }
+      );
+      res.json(token);
+    } else {
+      res.json("неверный пароль");
+    }
   }
 }
 

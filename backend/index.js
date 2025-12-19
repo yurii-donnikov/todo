@@ -1,6 +1,9 @@
+const dotenv = require("dotenv");
+dotenv.config();
 const express = require("express");
 const userRouter = require("./routes/user.routes");
 const taskRouter = require("./routes/task.routes");
+
 const pool = require("./db/db");
 
 const port = (process.env.port = 8080);
