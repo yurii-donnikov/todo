@@ -5,14 +5,30 @@ const dotenv = require("dotenv");
 
 class UserController {
   async createUser(req, res) {
-    const { name, email, password } = req.body;
-    const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
-    const newPerson = await db.query(
-      "INSERT INTO users (name, email, password) values ($1, $2, $3) RETURNING *",
-      [name, email, hashedPassword]
-    );
-    res.json(newPerson.rows[0]);
+    const { email, password, name } = req.body;
+    try {
+      const saltRounds = 10;
+      const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+      const newPerson = await db.query(
+        "INSERT INTO users (name, email, password) values ($1, $2, $3) RETURNING *",
+        [name, email, hashedPassword]
+      );
+      const token = jwt.sign(
+        { userId: newPerson.rows[0].id },
+        process.env.JWT_SECRET,
+        { expiresIn: "24h" }
+      );
+      res.json({ user: newPerson.rows[0], token: token });
+    } catch {
+      if (err.code === "23505") {
+        return res
+          .status(409)
+          .json({ message: "User with this email already exists" });
+      }
+
+      res.status(500).json({ message: "Server error" });
+    }
   }
 
   async getUsers(req, res) {
@@ -58,7 +74,7 @@ class UserController {
         process.env.JWT_SECRET,
         { expiresIn: "24h" }
       );
-      res.json(token);
+      res.json({ user: user.rows[0], token: token });
     } else {
       res.json("неверный пароль");
     }
