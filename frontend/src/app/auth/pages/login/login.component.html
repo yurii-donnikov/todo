@@ -1,1 +1,24 @@
-<p>login works!</p>
+<div>
+  <form class="register" [formGroup]="form" (ngSubmit)="submit()">
+    <label>
+      Email
+      <input type="email" formControlName="email" />
+      <span *ngIf="form.controls.email.touched && form.controls.email.invalid">
+        incorrect email
+      </span>
+    </label>
+
+    <label>
+      password
+      <input type="password" formControlName="password" />
+      <span
+        *ngIf="form.controls.password.touched && form.controls.password.invalid"
+      >
+        minimum 6 symbol
+      </span>
+    </label>
+
+    <button type="submit">login</button>
+  </form>
+  <a routerLink="/registration">registration</a>
+</div>
