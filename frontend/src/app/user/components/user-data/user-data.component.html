@@ -1,0 +1,11 @@
+<div class="user-data">
+  <!-- eslint-disable-next-line @angular-eslint/template/prefer-control-flow -->
+  <ng-container *ngIf="user$ | async as user">
+    <p>{{ user.name }}</p>
+    <p>{{ user.email }}</p>
+  </ng-container>
+  <!-- eslint-disable-next-line @angular-eslint/template/prefer-control-flow -->
+  <ng-container *ngIf="user$ | async as user">
+    <button (click)="openModal(user)">Change info</button>
+  </ng-container>
+</div>

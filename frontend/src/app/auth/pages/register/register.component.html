@@ -5,30 +5,35 @@
     <label>
       Имя
       <input type="text" formControlName="name" />
-      <span *ngIf="form.controls.name.touched && form.controls.name.invalid">
-        minimum 2 symbol
-      </span>
+
+      @if (form.controls.name.touched && form.controls.name.invalid) {
+      <span class="error">Minimum 2 symbols</span>
+      }
     </label>
 
     <label>
       Email
       <input type="email" formControlName="email" />
-      <span *ngIf="form.controls.email.touched && form.controls.email.invalid">
-        incorrect email
-      </span>
+
+      @if (form.controls.email.touched && form.controls.email.invalid) {
+      <span class="error">incorrect email</span>
+      }
     </label>
 
     <label>
       password
       <input type="password" formControlName="password" />
-      <span
-        *ngIf="form.controls.password.touched && form.controls.password.invalid"
-      >
-        minimum 6 symbol
-      </span>
+
+      @if (form.controls.name.touched && form.controls.name.invalid) {
+      <span class="error">minimum 6 symbol</span>
+      }
     </label>
 
     <button type="submit">register</button>
+
+    @if (error$ | async;) {
+    <p>{{ error$ }}</p>
+    }
   </form>
   <a routerLink="/login">or do you want to login?</a>
 </div>

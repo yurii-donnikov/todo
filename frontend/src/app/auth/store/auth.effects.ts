@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import {
+  autoLogin,
   login,
   loginFailure,
   loginSuccess,
@@ -51,5 +52,17 @@ export class AuthEffects {
         })
       ),
     { dispatch: false }
+  );
+
+  init$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(autoLogin),
+      switchMap(({ token }) =>
+        this.authApi.me(token).pipe(
+          map(({ user, token }) => loginSuccess({ user, token })),
+          catchError((err) => of(loginFailure({ error: err.message })))
+        )
+      )
+    )
   );
 }

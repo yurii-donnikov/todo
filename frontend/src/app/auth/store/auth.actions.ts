@@ -18,12 +18,12 @@ export const loginFailure = createAction(
 
 export const logout = createAction('[Auth] Logout');
 
-export const autoLogin = createAction(
-  '[Auth] Auto Login',
-  props<{ token: string }>()
-);
-
 export const registration = createAction(
   '[Auth] Registration',
   props<{ email: string; password: string; name: string }>()
+);
+
+export const autoLogin = createAction(
+  '[Auth] Init',
+  props<{ token: string }>()
 );
