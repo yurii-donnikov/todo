@@ -4,6 +4,7 @@ import { registration } from '../../store/auth.actions';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { selectAuthError } from '../../store/auth.selectors';
 
 @Component({
   selector: 'app-register',
@@ -15,6 +16,7 @@ import { RouterLink } from '@angular/router';
 export class RegisterComponent {
   private store = inject(Store);
   private fb = inject(FormBuilder);
+  error$ = this.store.select(selectAuthError);
 
   form = this.fb.nonNullable.group({
     name: ['', [Validators.required, Validators.minLength(2)]],

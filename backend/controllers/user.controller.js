@@ -79,6 +79,20 @@ class UserController {
       res.json("неверный пароль");
     }
   }
+
+  async autoLogin(req, res) {
+    const { token } = req.body;
+    try {
+      const user = await db.query("SELECT * FROM users WHERE id = $1", [
+        req.userId,
+      ]);
+      res.json({ user: user.rows[0], token: token });
+    } catch {
+      return res
+        .status(409)
+        .json({ message: "User with this email already exists" });
+    }
+  }
 }
 
 module.exports = new UserController();

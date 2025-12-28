@@ -3,12 +3,11 @@
     <img src="assets/images/logo.svg" alt="logo" />
   </a>
   <p class="header__title">todo list</p>
-  <div *ngIf="isAuthenticated$ | async">
-    <button (click)="logout()">Выйти</button>
-  </div>
 
-  <div *ngIf="!(isAuthenticated$ | async)">
-    <a routerLink="/login">Войти</a>
-  </div>
-  <button>check localstorage</button>
+  @if (isAuthenticated$ | async) {
+  <button (click)="logout()">Выйти</button>
+  } @else {
+  <a routerLink="/login">Войти</a>
+  }
+  <button (click)="checkStorage()">check localstorage</button>
 </div>

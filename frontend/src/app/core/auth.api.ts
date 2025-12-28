@@ -31,4 +31,10 @@ export class AuthApi {
       name,
     });
   }
+
+  me(token: string): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${environment.apiUrl}/me`, {
+      token,
+    });
+  }
 }
