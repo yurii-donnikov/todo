@@ -1,29 +1,46 @@
 import { Component, inject } from '@angular/core';
-import { MODAL_DATA } from '../../../shared/components/modal/modal.tokens';
-import { User } from '../../../auth/store/auth.models';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
-  standalone: true,
+  selector: 'app-user-edit-form',
   template: `
-    <h2>Edit user</h2>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
 
-    <form [formGroup]="form">
-      <input formControlName="name" />
-      <input formControlName="email" />
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Save</button>
     </form>
   `,
-  imports: [CommonModule, ReactiveFormsModule],
+  standalone: true,
+  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule],
 })
-export class UserEditComponent {
+export class UserEditFormComponent {
   private fb = inject(FormBuilder);
-  private user = inject(MODAL_DATA) as User;
-  constructor() {
-    this.form.patchValue(this.user);
-  }
+  private dialogRef = inject(MatDialogRef<UserEditFormComponent>);
+  private data = inject(MAT_DIALOG_DATA);
+
   form = this.fb.group({
     name: [''],
     email: [''],
   });
+
+  constructor() {
+    if (this.data) {
+      this.form.patchValue(this.data.user);
+    }
+  }
+
+  submit() {
+    const formValue = this.form.getRawValue();
+    this.dialogRef.close(formValue);
+  }
 }

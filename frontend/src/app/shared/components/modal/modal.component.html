@@ -1,12 +1,8 @@
-<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
-<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
-<div class="backdrop" (click)="onBackdrop()">
-  // eslint-disable-next-line
-  @angular-eslint/template/click-events-have-key-events //
-  eslint-disable-next-line
-  @angular-eslint/template/click-events-have-key-events,
-  @angular-eslint/template/click-events-have-key-events
-  <div class="modal" [style.width]="width" (click)="$event.stopPropagation()">
-    <ng-template #container></ng-template>
-  </div>
-</div>
+<mat-dialog-content>
+  <mat-dialog-content>
+    <ng-container *ngComponentOutlet="data.component"></ng-container>
+  </mat-dialog-content>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button matButton (click)="onNoClick()">No Thanks</button>
+</mat-dialog-actions>

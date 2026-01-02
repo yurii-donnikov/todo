@@ -1,6 +1,7 @@
 import { createSelector } from '@ngrx/store';
+import { Store } from './auth.models';
 
-export const selectAuthState = (state: any) => state.auth;
+export const selectAuthState = (state: Store) => state.auth;
 
 export const selectIsAuthenticated = createSelector(
   selectAuthState,

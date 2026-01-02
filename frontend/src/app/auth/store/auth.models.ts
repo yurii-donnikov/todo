@@ -1,3 +1,7 @@
+export interface Store {
+  auth: AuthState;
+}
+
 export interface User {
   id: string;
   email: string;

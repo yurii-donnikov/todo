@@ -1,38 +1,46 @@
+import { Component, inject, Type } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import {
-  Component,
-  EventEmitter,
-  Output,
-  Type,
-  ViewChild,
-  ViewContainerRef,
-  AfterViewInit,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+  MAT_DIALOG_DATA,
+  MatDialogActions,
+  MatDialogContent,
+  MatDialogRef,
+} from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { NgComponentOutlet } from '@angular/common';
+import { User } from '../../../auth/store/auth.models';
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
+export interface ModalData {
+  title: string;
+  component: Type<unknown>;
+  user?: User;
+}
 
 @Component({
-  selector: 'app-modal',
   standalone: true,
+  selector: 'app-dialog-overview-example-dialog',
   templateUrl: './modal.component.html',
-  styleUrl: './modal.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,
+    MatDialogContent,
+    MatDialogActions,
+    NgComponentOutlet,
+  ],
 })
-export class ModalComponent implements AfterViewInit {
-  @ViewChild('container', { read: ViewContainerRef })
-  container!: ViewContainerRef;
+export class DialogOverviewExampleDialog {
+  readonly dialogRef = inject(MatDialogRef<DialogOverviewExampleDialog>);
+  readonly data = inject<ModalData>(MAT_DIALOG_DATA);
 
-  @Output() closed = new EventEmitter<void>();
-
-  childComponent!: Type<unknown>;
-  width!: string;
-  closeOnBackdrop!: boolean;
-
-  ngAfterViewInit() {
-    this.container.createComponent(this.childComponent);
-  }
-
-  onBackdrop() {
-    if (this.closeOnBackdrop) {
-      this.closed.emit();
-    }
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

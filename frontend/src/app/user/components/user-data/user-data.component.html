@@ -6,6 +6,6 @@
   </ng-container>
   <!-- eslint-disable-next-line @angular-eslint/template/prefer-control-flow -->
   <ng-container *ngIf="user$ | async as user">
-    <button (click)="openModal(user)">Change info</button>
+    <button (click)="openDialog(user)">change information</button>
   </ng-container>
 </div>
