@@ -1,6 +1,6 @@
 import { Store } from '@ngrx/store';
-import { AuthApi } from '../auth.api';
-import { autoLogin, logout } from '../../auth/store/auth.actions';
+import { AuthApi } from '../api/auth.api';
+import { autoLogin, logout } from '../../store/auth/auth.actions';
 import { catchError, of, tap } from 'rxjs';
 
 export function initAuthFactory(store: Store, authApi: AuthApi) {

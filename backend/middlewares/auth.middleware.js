@@ -13,7 +13,6 @@ module.exports = function authMiddleware(req, res, next) {
     if (type !== "Bearer" || !token) {
       return res.status(401).json({ message: "Invalid auth format" });
     }
-    console.log(" == ", token);
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.userId = decoded.userId;
     next();

@@ -1,11 +1,12 @@
 import { Component, inject, signal } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { loadedUser } from '../../../auth/store/auth.selectors';
+import { loadedUser } from '../../../store/auth/auth.selectors';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogOverviewExampleDialog } from '../../../shared/components/modal/modal.component';
 import { UserEditFormComponent } from './user-edit.component';
-import { User } from '../../../auth/store/auth.models';
+import { User } from '../../../store/auth/auth.models';
+import { changeUser } from '../../../store/user/user.actions';
 
 @Component({
   standalone: true,
@@ -30,10 +31,9 @@ export class UserDataComponent {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-      console.log('result ', result);
       if (result !== undefined) {
         this.animal.set(result);
+        this.store.dispatch(changeUser(result));
         console.log(result);
       }
     });

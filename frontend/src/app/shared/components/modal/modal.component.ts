@@ -10,7 +10,7 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NgComponentOutlet } from '@angular/common';
-import { User } from '../../../auth/store/auth.models';
+import { User } from '../../../store/auth/auth.models';
 
 export interface DialogData {
   animal: string;

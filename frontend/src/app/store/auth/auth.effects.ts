@@ -9,7 +9,7 @@ import {
   loginSuccess,
   registration,
 } from './auth.actions';
-import { AuthApi } from '../../core/auth.api';
+import { AuthApi } from '../../core/api/auth.api';
 import { Router } from '@angular/router';
 
 @Injectable()

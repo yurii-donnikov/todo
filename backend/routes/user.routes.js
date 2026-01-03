@@ -9,7 +9,7 @@ router.post("/me", authMiddleware, userController.autoLogin);
 
 router.get("/user", authMiddleware, userController.getUsers);
 router.get("/user/:id", authMiddleware, userController.getUser);
-router.put("/user/:id", authMiddleware, userController.updateUser);
+router.put("/user", authMiddleware, userController.updateUser);
 router.delete("/user/:id", authMiddleware, userController.deleteUser);
 
 module.exports = router;

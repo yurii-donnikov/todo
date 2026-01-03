@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../auth/store/auth.models';
-import { environment } from '../../environment';
+import { User } from '../../store/auth/auth.models';
+import { environment } from '../../../environment';
 
 interface LoginResponse {
   user: User;
@@ -11,7 +11,7 @@ interface LoginResponse {
 
 @Injectable({ providedIn: 'root' })
 export class AuthApi {
-  constructor(private http: HttpClient) {}
+  http = inject(HttpClient);
 
   login(email: string, password: string): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${environment.apiUrl}/login`, {
