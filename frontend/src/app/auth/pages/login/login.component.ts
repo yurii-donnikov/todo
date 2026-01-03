@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { login } from '../../store/auth.actions';
+import { login } from '../../../store/auth/auth.actions';
 import { RouterLink } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { selectAuthError } from '../../store/auth.selectors';
+import { selectAuthError } from '../../../store/auth/auth.selectors';
 
 @Component({
   selector: 'app-login',

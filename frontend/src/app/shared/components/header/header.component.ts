@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { logout } from '../../../auth/store/auth.actions';
+import { logout } from '../../../store/auth/auth.actions';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
-import { selectIsAuthenticated } from '../../../auth/store/auth.selectors';
+import { selectIsAuthenticated } from '../../../store/auth/auth.selectors';
 import { CommonModule } from '@angular/common';
 
 @Component({

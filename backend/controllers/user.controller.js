@@ -43,15 +43,12 @@ class UserController {
   }
 
   async updateUser(req, res) {
-    const { name, email, password } = req.body;
-    const id = req.params.id;
-    const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
-    const users = await db.query(
-      "UPDATE users set name = $1, email = $2, password = $3 where id = $4 RETURNING *",
-      [name, email, hashedPassword, id]
+    const { name, email } = req.body;
+    const user = await db.query(
+      "UPDATE users set name = $1, email = $2 where id = $3 RETURNING *",
+      [name, email, req.userId]
     );
-    res.json(users.rows);
+    res.json({ user: user.rows[0] });
   }
 
   async deleteUser(req, res) {

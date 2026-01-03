@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { registration } from '../../store/auth.actions';
+import { registration } from '../../../store/auth/auth.actions';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { selectAuthError } from '../../store/auth.selectors';
+import { selectAuthError } from '../../../store/auth/auth.selectors';
 
 @Component({
   selector: 'app-register',
