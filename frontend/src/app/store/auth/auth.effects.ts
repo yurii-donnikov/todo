@@ -11,12 +11,15 @@ import {
 } from './auth.actions';
 import { AuthApi } from '../../core/api/auth.api';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { getTasks } from '../user/user.actions';
 
 @Injectable()
 export class AuthEffects {
   private actions$ = inject(Actions);
   private authApi = inject(AuthApi);
   private router = inject(Router);
+  private store = inject(Store);
 
   login$ = createEffect(() => {
     return this.actions$.pipe(
@@ -59,7 +62,10 @@ export class AuthEffects {
       ofType(autoLogin),
       switchMap(({ token }) =>
         this.authApi.me(token).pipe(
-          map(({ user, token }) => loginSuccess({ user, token })),
+          map(({ user, token }) => {
+            this.store.dispatch(getTasks());
+            return loginSuccess({ user, token });
+          }),
           catchError((err) => of(loginFailure({ error: err.message })))
         )
       )

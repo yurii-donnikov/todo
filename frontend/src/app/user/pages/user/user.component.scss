@@ -1,5 +1,23 @@
 .app-user {
-  display: block;
-  position: relative;
-  padding: 0 10%;
+  display: flex;
+  height: calc(100vh - 64px);
+  background-color: #f9fafb;
+  gap: 16px;
+  padding: 16px;
+
+  app-user-data {
+    flex: 0 0 20%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+  }
+
+  app-tasks {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+  }
 }

@@ -1,28 +1,33 @@
-<div>
-  <form class="register" [formGroup]="form" (ngSubmit)="submit()">
-    <label>
+<div class="auth">
+  <form class="auth__form" [formGroup]="form" (ngSubmit)="login()">
+    <label class="form-field">
       Email
-      <input type="email" formControlName="email" />
-
+      <input type="email" formControlName="email" class="form-field__input" />
       @if (form.controls.email.touched && form.controls.email.invalid) {
-      <span class="error">incorrect email</span>
+      <span class="form-field__error">incorrect email</span>
       }
     </label>
 
-    <label>
-      password
-      <input type="password" formControlName="password" />
-
+    <label class="form-field">
+      Password
+      <input
+        type="password"
+        formControlName="password"
+        class="form-field__input"
+      />
       @if (form.controls.password.touched && form.controls.password.invalid) {
-      <span class="error">minimum 6 symbol</span>
+      <span class="form-field__error">minimum 6 symbol</span>
       }
     </label>
 
-    <button type="submit">login</button>
+    <button class="form-submit" type="submit">login</button>
 
     @if (error$ | async;) {
-    <p>{{ error$ }}</p>
+    <p class="form-error">{{ error$ }}</p>
     }
   </form>
-  <a routerLink="/registration">registration</a>
+  <p class="auth__link">
+    Don't have an account yet?
+    <a routerLink="/registration">register oneself</a>
+  </p>
 </div>

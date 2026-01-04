@@ -1,11 +1,13 @@
 <div class="user-data">
   <!-- eslint-disable-next-line @angular-eslint/template/prefer-control-flow -->
   <ng-container *ngIf="user$ | async as user">
-    <p>{{ user.name }}</p>
-    <p>{{ user.email }}</p>
+    <p class="user-data__name">{{ user.name }}</p>
+    <p class="user-data__email">{{ user.email }}</p>
   </ng-container>
   <!-- eslint-disable-next-line @angular-eslint/template/prefer-control-flow -->
   <ng-container *ngIf="user$ | async as user">
-    <button (click)="openDialog(user)">change information</button>
+    <button class="btn btn--outline" (click)="openDialog(user)">
+      change information
+    </button>
   </ng-container>
 </div>

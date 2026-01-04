@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../../store/auth/auth.models';
+import { User, Task } from '../../store/auth/auth.models';
 import { environment } from '../../../environment';
 
 interface LoginResponse {
@@ -17,5 +17,9 @@ export class UserApi {
       name,
       email,
     });
+  }
+
+  getTasks(): Observable<[Task]> {
+    return this.http.get<[Task]>(`${environment.apiUrl}/task`);
   }
 }

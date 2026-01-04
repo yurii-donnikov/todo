@@ -1,5 +1,5 @@
 export interface Store {
-  auth: AuthState;
+  auth: UserState;
 }
 
 export interface User {
@@ -8,10 +8,13 @@ export interface User {
   name: string;
 }
 
-export interface AuthState {
-  user: User | null;
-  token: string | null;
-  isAuthenticated: boolean;
-  loading: boolean;
-  error: string | null;
+export interface Task {
+  id: string;
+  title: string;
+  status: string;
+  user_id: string;
+}
+
+export interface UserState {
+  task: Task[] | null;
 }

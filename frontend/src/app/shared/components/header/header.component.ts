@@ -17,10 +17,6 @@ export class HeaderComponent {
   private router = inject(Router);
   isAuthenticated$ = this.store.select(selectIsAuthenticated);
 
-  checkStorage() {
-    console.log(localStorage.getItem('token'));
-  }
-
   logout() {
     this.store.dispatch(logout());
     localStorage.removeItem('token');

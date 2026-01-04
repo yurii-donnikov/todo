@@ -24,7 +24,7 @@ export class RegisterComponent {
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
-  submit() {
+  register() {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
