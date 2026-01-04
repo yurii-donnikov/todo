@@ -2,12 +2,8 @@
   <a href="/" class="header__logo">
     <img src="assets/images/logo.svg" alt="logo" />
   </a>
-  <p class="header__title">todo list</p>
-
+  <p class="header__title">Todo list</p>
   @if (isAuthenticated$ | async) {
-  <button (click)="logout()">Выйти</button>
-  } @else {
-  <a routerLink="/login">Войти</a>
+  <button class="btn btn--outline" (click)="logout()">Logout</button>
   }
-  <button (click)="checkStorage()">check localstorage</button>
 </div>

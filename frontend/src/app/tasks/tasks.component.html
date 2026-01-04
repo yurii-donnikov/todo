@@ -1,0 +1,11 @@
+<div>
+  <p>tasks</p>
+  @if (tasks$ | async; as tasks) { @if (tasks.length > 0) { @for (task of tasks;
+  track task.id) {
+  <div class="task">
+    {{ task.title }}
+  </div>
+  } } @else {
+  <p>No tasks</p>
+  } }
+</div>

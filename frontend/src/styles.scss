@@ -1,3 +1,6 @@
+@use "./styles/variables";
+@use "./styles/buttons";
+
 /* You can add global styles to this file, and also import other style files */
 /* =========================
    Global reset & base styles
@@ -43,6 +46,15 @@ a {
   text-decoration: none;
   color: inherit;
 }
+p {
+  font-size: 15px;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

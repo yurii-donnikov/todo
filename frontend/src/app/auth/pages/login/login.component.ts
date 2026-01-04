@@ -22,10 +22,8 @@ export class LoginComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
-  qwe() {
-    console.log(this.error$.subscribe((i) => i));
-  }
-  submit() {
+
+  login() {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;

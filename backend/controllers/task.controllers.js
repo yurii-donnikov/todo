@@ -10,7 +10,7 @@ class TaskController {
     res.json(newTask.rows[0]);
   }
   async getTaskById(req, res) {
-    const id = req.params.id;
+    const id = req.userId;
     const tasks = await db.query("SELECT * FROM tasks where user_id = $1", [
       id,
     ]);
