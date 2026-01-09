@@ -1,16 +1,20 @@
 import { createReducer, on } from '@ngrx/store';
 import * as UserActions from './user.actions';
+import * as AuthActions from '../auth/auth.actions';
 import { UserState } from './user.models';
 
 export const initialState: UserState = {
-  task: null,
+  profile: null,
 };
 
 export const userReducer = createReducer(
   initialState,
-
-  on(UserActions.getTasksSuccess, (state, data) => ({
+  on(AuthActions.loginSuccess, (state, { user }) => ({
     ...state,
-    task: data.tasks,
+    profile: user,
+  })),
+  on(UserActions.updateUserSuccess, (state, { user }) => ({
+    ...state,
+    profile: user,
   }))
 );

@@ -1,0 +1,56 @@
+.task-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 14px;
+
+  border: 1px solid #e5e9f0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  cursor: pointer;
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  }
+
+  .title {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .status {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    padding: 4px 8px;
+    border-radius: 8px;
+  }
+
+  &.new .status {
+    background-color: #e3f2fd;
+    color: #1565c0;
+  }
+
+  &.progress .status {
+    background-color: #fff3e0;
+    color: #ef6c00;
+  }
+
+  &.done .status {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+  }
+}

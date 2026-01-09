@@ -1,9 +1,9 @@
 import { createSelector } from '@ngrx/store';
-import { Store } from '../auth/auth.models';
+import { Store } from '../app.state';
 
 export const selectUserState = (state: Store) => state.user;
 
-export const selectTasks = createSelector(
+export const loadedUser = createSelector(
   selectUserState,
-  (state) => state.task
+  (state) => state.profile
 );
