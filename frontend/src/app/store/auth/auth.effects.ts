@@ -8,11 +8,11 @@ import {
   loginFailure,
   loginSuccess,
   registration,
-} from './auth.actions';
+} from './index';
 import { AuthApi } from '../../core/api/auth.api';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { getTasks } from '../user/user.actions';
+import { loadTasks } from '../task';
 
 @Injectable()
 export class AuthEffects {
@@ -26,7 +26,10 @@ export class AuthEffects {
       ofType(login),
       switchMap(({ email, password }) =>
         this.authApi.login(email, password).pipe(
-          map(({ user, token }) => loginSuccess({ user, token })),
+          map(({ user, token }) => {
+            this.store.dispatch(loadTasks());
+            return loginSuccess({ user, token });
+          }),
           catchError((err) => of(loginFailure({ error: err.message })))
         )
       )
@@ -63,7 +66,7 @@ export class AuthEffects {
       switchMap(({ token }) =>
         this.authApi.me(token).pipe(
           map(({ user, token }) => {
-            this.store.dispatch(getTasks());
+            this.store.dispatch(loadTasks());
             return loginSuccess({ user, token });
           }),
           catchError((err) => of(loginFailure({ error: err.message })))

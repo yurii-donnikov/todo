@@ -1,0 +1,15 @@
+.tasks-board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  gap: 24px;
+
+  padding: 24px;
+  height: 100%;
+
+  background-color: #f4f6f8;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

@@ -7,15 +7,17 @@ import { provideRouter } from '@angular/router';
 import { provideStore, Store } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { authReducer } from './store/auth/auth.reducer';
+import { authReducer } from './store/auth';
+import { taskReducer } from './store/task';
 import { routes } from './app.routes';
 import { AuthEffects } from './store/auth/auth.effects';
 import { UserEffects } from './store/user/user.effects';
+import { TaskEffects } from './store/task';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './auth/services/auth.interceptor';
 import { initAuthFactory } from './core/auth/init-auth.factory';
 import { AuthApi } from './core/api/auth.api';
-import { userReducer } from './store/user/user.reduceer';
+import { userReducer } from './store/user';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -30,8 +32,9 @@ export const appConfig: ApplicationConfig = {
     provideStore({
       auth: authReducer,
       user: userReducer,
+      task: taskReducer,
     }),
-    provideEffects(AuthEffects, UserEffects),
+    provideEffects(AuthEffects, UserEffects, TaskEffects),
     provideRouter(routes),
     provideStoreDevtools({
       maxAge: 25,
