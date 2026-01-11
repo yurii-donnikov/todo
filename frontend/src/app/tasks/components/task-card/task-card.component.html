@@ -1,4 +1,25 @@
 <div class="task-card" [class]="task?.status">
+  <div class="actions">
+    @if (task) {
+    <button
+      class="edit-btn"
+      type="button"
+      (click)="editTask(task)"
+      aria-label="Edit task"
+    >
+      ✎
+    </button>
+    }
+
+    <button
+      class="delete-btn"
+      type="button"
+      (click)="deleteTask()"
+      aria-label="Delete task"
+    >
+      ✕
+    </button>
+  </div>
   <h3 class="title">{{ task?.title }}</h3>
 
   <div class="footer">

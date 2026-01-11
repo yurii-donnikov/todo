@@ -6,5 +6,5 @@ export interface Task {
   id: string;
   title: string;
   status: string;
-  user_id: string;
+  user_id?: string;
 }
