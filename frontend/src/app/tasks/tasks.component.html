@@ -1,7 +1,11 @@
-<div class="tasks-board">
-  <app-task-column title="New" [tasks]="newTasks$ | async" />
+<div>
+  <button class="btn btn--outline" (click)="createTask()">create</button>
 
-  <app-task-column title="In progress" [tasks]="inProgressTasks$ | async" />
+  <div class="tasks-board">
+    <app-task-column title="New" [tasks]="newTasks$ | async" />
 
-  <app-task-column title="Done" [tasks]="doneTasks$ | async" />
+    <app-task-column title="In progress" [tasks]="inProgressTasks$ | async" />
+
+    <app-task-column title="Done" [tasks]="doneTasks$ | async" />
+  </div>
 </div>

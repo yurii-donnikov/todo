@@ -1,12 +1,12 @@
 import { Component, inject, signal } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { loadedUser } from '../../../store/user/user.selectors';
+import { loadedUser } from '../../../store/user';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogOverviewExampleDialog } from '../../../shared/components/modal/modal.component';
 import { UserEditFormComponent } from './user-edit.component';
 import { User } from '../../../store/user';
-import { updateUser } from '../../../store/user/user.actions';
+import { updateUser } from '../../../store/user';
 
 @Component({
   standalone: true,

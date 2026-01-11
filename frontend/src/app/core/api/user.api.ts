@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Task } from '../../store/auth/auth.models';
+import { Task } from '../../store/task';
 import { environment } from '../../../environment';
 import { User } from '../../store/user';
 

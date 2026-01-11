@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  position: relative;
 
   cursor: pointer;
 
@@ -16,6 +17,9 @@
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    .action-btn {
+      opacity: 1;
+    }
   }
 
   .title {
@@ -52,5 +56,56 @@
   &.done .status {
     background-color: #e8f5e9;
     color: #2e7d32;
+  }
+}
+
+/* контейнер кнопок */
+.actions {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  display: flex;
+  gap: 6px;
+}
+
+/* базовый стиль */
+.action-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  cursor: pointer;
+
+  opacity: 0;
+  transition: opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease,
+    transform 0.1s ease;
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+/* ✏️ Edit */
+.edit-btn {
+  @extend .action-btn;
+  color: #6b7280;
+
+  &:hover {
+    background-color: #e0f2fe;
+    color: #0284c7;
+  }
+}
+
+/* ❌ Delete */
+.delete-btn {
+  @extend .action-btn;
+  color: #9ca3af;
+
+  &:hover {
+    background-color: #fee2e2;
+    color: #dc2626;
   }
 }
