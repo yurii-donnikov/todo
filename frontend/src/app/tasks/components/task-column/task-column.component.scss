@@ -61,3 +61,15 @@
   color: #9aa5b1;
   font-size: 14px;
 }
+.task-drag {
+  cursor: grab;
+}
+
+.cdk-drag-preview {
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.3;
+}

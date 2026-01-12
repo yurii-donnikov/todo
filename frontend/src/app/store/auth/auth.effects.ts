@@ -27,6 +27,7 @@ export class AuthEffects {
       switchMap(({ email, password }) =>
         this.authApi.login(email, password).pipe(
           map(({ user, token }) => {
+            localStorage.setItem('token', token);
             this.store.dispatch(loadTasks());
             return loginSuccess({ user, token });
           }),
