@@ -2,10 +2,25 @@
   <button class="btn btn--outline" (click)="createTask()">create</button>
 
   <div class="tasks-board">
-    <app-task-column title="New" [tasks]="newTasks$ | async" />
+    <app-task-column
+      title="New"
+      status="new"
+      [tasks]="(newTasks$ | async) ?? []"
+      [connectedLists]="['progress', 'done']"
+    />
 
-    <app-task-column title="In progress" [tasks]="inProgressTasks$ | async" />
+    <app-task-column
+      title="In progress"
+      status="progress"
+      [tasks]="(inProgressTasks$ | async) ?? []"
+      [connectedLists]="['new', 'done']"
+    />
 
-    <app-task-column title="Done" [tasks]="doneTasks$ | async" />
+    <app-task-column
+      title="Done"
+      status="done"
+      [tasks]="(doneTasks$ | async) ?? []"
+      [connectedLists]="['new', 'progress']"
+    />
   </div>
 </div>

@@ -1,14 +1,20 @@
-<div class="task-column">
+<div
+  class="task-column"
+  cdkDropList
+  [cdkDropListData]="tasks"
+  [cdkDropListConnectedTo]="connectedLists"
+  (cdkDropListDropped)="drop($event)"
+  [id]="status"
+>
   <div class="column-header">
     <h2 class="title">{{ title }}</h2>
-    <span class="counter">{{ tasks?.length ?? 0 }}</span>
+    <!-- <span class="counter">{{ tasks.length ?? 0 }}</span> -->
   </div>
-
   <div class="column-content">
-    @if (tasks?.length) { @for (task of tasks; track task.id) {
-    <app-task-card [task]="task" />
-    } } @else {
-    <div class="empty-state">No tasks</div>
+    @for (task of tasks; track task.id) {
+    <div cdkDrag class="task-drag">
+      <app-task-card [task]="task" />
+    </div>
     }
   </div>
 </div>
