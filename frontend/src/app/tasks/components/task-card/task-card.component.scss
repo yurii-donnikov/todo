@@ -59,7 +59,6 @@
   }
 }
 
-/* контейнер кнопок */
 .actions {
   position: absolute;
   top: 8px;
@@ -69,7 +68,6 @@
   gap: 6px;
 }
 
-/* базовый стиль */
 .action-btn {
   width: 28px;
   height: 28px;
@@ -88,7 +86,6 @@
   }
 }
 
-/* ✏️ Edit */
 .edit-btn {
   @extend .action-btn;
   color: #6b7280;
@@ -99,7 +96,6 @@
   }
 }
 
-/* ❌ Delete */
 .delete-btn {
   @extend .action-btn;
   color: #9ca3af;

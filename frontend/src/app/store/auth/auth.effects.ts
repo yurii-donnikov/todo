@@ -27,8 +27,6 @@ export class AuthEffects {
       switchMap(({ email, password }) =>
         this.authApi.login(email, password).pipe(
           map(({ user, token }) => {
-            localStorage.setItem('token', token);
-            this.store.dispatch(loadTasks());
             return loginSuccess({ user, token });
           }),
           catchError((err) => of(loginFailure({ error: err.message })))
@@ -49,30 +47,30 @@ export class AuthEffects {
     );
   });
 
-  registerSuccess$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(loginSuccess),
-        tap(({ token }) => {
-          localStorage.setItem('token', token);
-          this.router.navigate(['/home']);
-        })
-      ),
-    { dispatch: false }
-  );
-
   init$ = createEffect(() =>
     this.actions$.pipe(
       ofType(autoLogin),
       switchMap(({ token }) =>
         this.authApi.me(token).pipe(
           map(({ user, token }) => {
-            this.store.dispatch(loadTasks());
             return loginSuccess({ user, token });
           }),
           catchError((err) => of(loginFailure({ error: err.message })))
         )
       )
     )
+  );
+
+  loginSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(loginSuccess),
+        tap(({ token }) => {
+          localStorage.setItem('token', token);
+          this.store.dispatch(loadTasks());
+          this.router.navigate(['/home']);
+        })
+      ),
+    { dispatch: false }
   );
 }
