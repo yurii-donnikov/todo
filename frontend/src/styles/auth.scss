@@ -1,0 +1,85 @@
+.auth {
+  &__form {
+    max-width: 400px;
+    margin: 4rem auto;
+    padding: 0 16px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &-submit {
+      min-height: 44px;
+      padding: 10px;
+      background: #1976d2;
+      color: #fff;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+
+      transition: background-color 0.2s ease, transform 0.1s ease;
+
+      &:hover:not(:disabled) {
+        background: #1565c0;
+      }
+
+      &:active:not(:disabled) {
+        transform: translateY(1px);
+      }
+
+      &:disabled {
+        background: #aaa;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &__link {
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+    font-size: 14px;
+
+    a {
+      text-decoration: underline;
+      color: #1976d2;
+    }
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 16px;
+
+    &__input {
+      min-height: 44px;
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+      &:focus {
+        outline: none;
+        border-color: #1976d2;
+        box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.15);
+      }
+    }
+
+    &__error {
+      font-size: 12px;
+      color: #d32f2f;
+    }
+  }
+
+  // 📱 MOBILE
+  @media (max-width: 768px) {
+    &__form {
+      margin: 2rem auto;
+    }
+  }
+}

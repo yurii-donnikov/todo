@@ -10,24 +10,7 @@ export type TaskStatus = 'new' | 'progress' | 'done';
 
 @Component({
   selector: 'app-task-create-form',
-  template: `
-    <form [formGroup]="form" (ngSubmit)="submit()">
-      <mat-form-field appearance="outline">
-        <mat-label>title</mat-label>
-        <input matInput formControlName="title" />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Status</mat-label>
-        <mat-select formControlName="status">
-          <mat-option value="new">New</mat-option>
-          <mat-option value="progress">In progress</mat-option>
-          <mat-option value="done">Done</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <button mat-raised-button color="primary" type="submit">Create</button>
-    </form>
-  `,
+  templateUrl: './task-create-form.component.html',
   standalone: true,
   imports: [
     MatFormFieldModule,
@@ -37,6 +20,7 @@ export type TaskStatus = 'new' | 'progress' | 'done';
     MatSelectModule,
     MatButtonModule,
   ],
+  styleUrl: './task-create-form.component.scss',
 })
 export class TaskCreateFormComponent {
   private fb = inject(FormBuilder);

@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 import { TaskColumnComponent } from './components/task-column/task-column.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogOverviewExampleDialog } from '../shared/components/modal/modal.component';
-import { TaskCreateFormComponent } from './components/task-create/task-create.component';
+import { TaskCreateFormComponent } from './components/task-create/task-create-form.component';
 import { createTasks } from '../store/task';
 
 @Component({

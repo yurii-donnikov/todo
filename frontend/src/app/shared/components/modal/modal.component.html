@@ -1,8 +1,9 @@
-<mat-dialog-content>
-  <mat-dialog-content>
+<mat-dialog-content class="modal">
+  <div class="modal__body">
     <ng-container *ngComponentOutlet="data.component"></ng-container>
-  </mat-dialog-content>
+  </div>
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button matButton (click)="onNoClick()">No Thanks</button>
+
+<mat-dialog-actions class="modal__actions">
+  <button class="btn btn--outline" (click)="onNoClick()">Cancel</button>
 </mat-dialog-actions>

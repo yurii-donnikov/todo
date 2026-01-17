@@ -1,0 +1,21 @@
+<form class="task-form" [formGroup]="form" (ngSubmit)="submit()">
+  <mat-form-field appearance="outline">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status">
+      <mat-option value="new">New</mat-option>
+      <mat-option value="progress">In progress</mat-option>
+      <mat-option value="done">Done</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="task-form__actions">
+    <button color="primary" type="submit" class="btn btn--outline">
+      Create
+    </button>
+  </div>
+</form>

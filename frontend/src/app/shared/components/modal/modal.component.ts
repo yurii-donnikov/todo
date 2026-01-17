@@ -35,6 +35,7 @@ export interface ModalData {
     MatDialogActions,
     NgComponentOutlet,
   ],
+  styleUrl: './modal.component.scss',
 })
 export class DialogOverviewExampleDialog {
   readonly dialogRef = inject(MatDialogRef<DialogOverviewExampleDialog>);

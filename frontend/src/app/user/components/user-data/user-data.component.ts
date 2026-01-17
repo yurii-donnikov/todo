@@ -4,7 +4,7 @@ import { loadedUser } from '../../../store/user';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogOverviewExampleDialog } from '../../../shared/components/modal/modal.component';
-import { UserEditFormComponent } from './user-edit.component';
+import { UserEditFormComponent } from '../user-edit/user-edit.component';
 import { User } from '../../../store/user';
 import { updateUser } from '../../../store/user';
 

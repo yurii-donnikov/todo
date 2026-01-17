@@ -6,20 +6,8 @@ import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-user-edit-form',
-  template: `
-    <form [formGroup]="form" (ngSubmit)="submit()">
-      <mat-form-field appearance="outline">
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="name" />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput type="email" formControlName="email" />
-      </mat-form-field>
-      <button mat-raised-button color="primary" type="submit">Save</button>
-    </form>
-  `,
+  templateUrl: './user-edit.component.html',
+  styleUrl: './user-edit.component.scss',
   standalone: true,
   imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule],
 })

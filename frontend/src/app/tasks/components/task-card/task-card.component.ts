@@ -9,7 +9,7 @@ import { Store } from '@ngrx/store';
 import { deleteTask } from '../../../store/task';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogOverviewExampleDialog } from '../../../shared/components/modal/modal.component';
-import { TaskCreateFormComponent } from '../task-create/task-create.component';
+import { TaskCreateFormComponent } from '../task-create/task-create-form.component';
 
 @Component({
   selector: 'app-task-card',

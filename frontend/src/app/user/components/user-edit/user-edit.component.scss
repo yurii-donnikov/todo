@@ -1,0 +1,35 @@
+:host {
+  display: block;
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  min-width: 320px;
+  max-width: 420px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.user-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+@media (max-width: 480px) {
+  .user-form {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .user-form__actions {
+    button {
+      width: 100%;
+    }
+  }
+}
