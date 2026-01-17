@@ -1,0 +1,36 @@
+:host {
+  display: block;
+}
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  min-width: 320px;
+  max-width: 420px;
+  input {
+    height: 20px;
+  }
+}
+mat-form-field {
+  width: 100%;
+}
+
+.task-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+@media (max-width: 480px) {
+  .task-form {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .task-form__actions {
+    button {
+      width: 100%;
+    }
+  }
+}

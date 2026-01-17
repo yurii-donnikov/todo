@@ -10,7 +10,7 @@ import { selectAuthError } from '../../../store/auth/auth.selectors';
   selector: 'app-login',
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  styleUrl: '../../../../styles/auth.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {

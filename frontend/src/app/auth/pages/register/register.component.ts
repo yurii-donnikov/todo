@@ -10,7 +10,7 @@ import { selectAuthError } from '../../../store/auth/auth.selectors';
   selector: 'app-register',
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.scss',
+  styleUrl: '../../../../styles/auth.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterComponent {

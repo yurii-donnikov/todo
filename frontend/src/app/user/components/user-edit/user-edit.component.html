@@ -1,0 +1,15 @@
+<form class="user-form" [formGroup]="form" (ngSubmit)="submit()">
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput type="email" formControlName="email" />
+  </mat-form-field>
+
+  <div class="user-form__actions">
+    <button class="btn btn--outline" color="primary" type="submit">Save</button>
+  </div>
+</form>

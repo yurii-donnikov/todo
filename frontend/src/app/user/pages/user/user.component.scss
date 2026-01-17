@@ -4,20 +4,41 @@
   background-color: #f9fafb;
   gap: 16px;
   padding: 16px;
+  overflow: hidden;
 
   app-user-data {
     flex: 0 0 20%;
+    min-width: 0;
     background-color: #ffffff;
     border-radius: 8px;
     padding: 16px;
     border: 1px solid #e5e7eb;
+    overflow: hidden;
   }
 
   app-tasks {
     flex: 1;
-    background-color: #ffffff;
+    min-width: 0;
+    background-color: #f4f6f8;
     border-radius: 8px;
     padding: 16px;
     border: 1px solid #e5e7eb;
+    overflow: hidden;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+
+    app-user-data {
+      flex: none;
+      width: 100%;
+    }
+
+    app-tasks {
+      flex: 1;
+      width: 100%;
+      min-height: 0;
+    }
   }
 }
