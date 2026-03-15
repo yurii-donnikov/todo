@@ -58,14 +58,13 @@ Example concepts demonstrated:
 ## Screenshots
 
 ### Login page
-
+![Login](images/home_page.png)
 
 ### Home page
+![Home](images/home_page.png)
 
-
-
-### Task Editing
-
+### Task Editing 
+![Home](images/tasks.png)
 
 ---
 
