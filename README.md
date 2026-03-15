@@ -58,13 +58,13 @@ Example concepts demonstrated:
 ## Screenshots
 
 ### Login page
-![Login](images/home_page.png)
+![Login](frontend/src/assets/images/home_page.png)
 
 ### Home page
-![Home](images/home_page.png)
+![Home](frontend/src/assets/images/home_page.png)
 
 ### Task Editing 
-![Home](images/tasks.png)
+![Tasks](frontend/src/assets/images/tasks.png)
 
 ---
 
