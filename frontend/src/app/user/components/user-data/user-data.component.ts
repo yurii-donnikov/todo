@@ -34,7 +34,6 @@ export class UserDataComponent {
       if (result !== undefined) {
         this.animal.set(result);
         this.store.dispatch(updateUser(result));
-        console.log(result);
       }
     });
   }
