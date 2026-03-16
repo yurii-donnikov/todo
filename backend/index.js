@@ -4,27 +4,37 @@ const express = require("express");
 const userRouter = require("./routes/user.routes");
 const taskRouter = require("./routes/task.routes");
 const cors = require("cors");
-
+const path = require("path");
 const pool = require("./db/db");
+const runMigrations = require("./db/migrations/runMigrations");
 
-const port = (process.env.port = 8080);
-
+const port = process.env.port || 8080;
 const app = express();
+
 app.use(
   cors({
     origin: "http://localhost:4200",
     credentials: true,
-  })
+  }),
 );
 
 app.use(express.json());
 
 app.use("/api", [userRouter, taskRouter]);
 
+const frontendPath = path.join(__dirname, "../frontend/dist/frontend/browser");
+app.use(express.static(frontendPath));
+
+app.use((req, res) => {
+  res.sendFile(path.join(frontendPath, "index.html"));
+});
+
 app.get("/debug/db", async (req, res) => {
   const result = await pool.query("SELECT current_database()");
   res.json(result.rows[0]);
 });
+
+runMigrations();
 
 app.listen(port, () => {
   console.log(`port ${port} works`);

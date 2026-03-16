@@ -5,6 +5,17 @@ The project demonstrates reactive programming patterns, state management with Rx
 
 This project was created as part of my frontend portfolio while focusing on Angular development.
 
+## Database
+
+The application automatically initializes the database on startup.
+
+Tables are created via SQL migrations and demo data is inserted for testing.
+
+Demo user:
+
+email: demo@mail.com  
+password: 123456
+
 ---
 
 ## Features
@@ -21,6 +32,7 @@ This project was created as part of my frontend portfolio while focusing on Angu
 ## Tech Stack
 
 Frontend
+
 - Angular
 - TypeScript
 - RxJS
@@ -28,9 +40,11 @@ Frontend
 - CSS / SCSS
 
 Backend (development)
+
 - json-server / Firebase (depending on your version)
 
 Tools
+
 - Git
 - npm
 - Angular CLI
@@ -58,12 +72,15 @@ Example concepts demonstrated:
 ## Screenshots
 
 ### Login page
+
 ![Login](frontend/src/assets/images/home_page.png)
 
 ### Home page
+
 ![Home](frontend/src/assets/images/home_page.png)
 
-### Task Editing 
+### Task Editing
+
 ![Tasks](frontend/src/assets/images/tasks.png)
 
 ---
@@ -74,3 +91,4 @@ Clone the repository
 
 ```bash
 git clone https://github.com/yurii-donnikov/angular-task-manager.git
+```

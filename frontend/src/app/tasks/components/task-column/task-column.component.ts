@@ -23,19 +23,18 @@ export class TaskColumnComponent {
   @Input() connectedLists: string[] = [];
 
   drop(event: CdkDragDrop<Task[]>) {
-    console.log(1);
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
         event.previousIndex,
-        event.currentIndex
+        event.currentIndex,
       );
     } else {
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
-        event.currentIndex
+        event.currentIndex,
       );
 
       const movedTask = event.container.data[event.currentIndex];
@@ -47,7 +46,7 @@ export class TaskColumnComponent {
             status: this.status,
           },
           id: movedTask.id,
-        })
+        }),
       );
     }
   }
