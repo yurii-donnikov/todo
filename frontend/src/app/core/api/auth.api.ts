@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../../store/user';
-import { environment } from '../../../environment';
+import { environment } from '../../../environments/environment';
 
 interface LoginResponse {
   user: User;
@@ -23,7 +23,7 @@ export class AuthApi {
   registration(
     email: string,
     password: string,
-    name: string
+    name: string,
   ): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${environment.apiUrl}/user`, {
       email,

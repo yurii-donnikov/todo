@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Task } from '../../store/task';
-import { environment } from '../../../environment';
+import { environment } from '../../../environments/environment';
 import { User } from '../../store/user';
 
 interface LoginResponse {
