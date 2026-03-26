@@ -5,19 +5,6 @@ The project demonstrates reactive programming patterns, state management with Rx
 
 This project was created as part of my frontend portfolio while focusing on Angular development.
 
-## Database
-
-The application automatically initializes the database on startup.
-
-Tables are created via SQL migrations and demo data is inserted for testing.
-
-Demo user:
-
-email: demo@mail.com  
-password: 123456
-
----
-
 ## Features
 
 - Create, edit and delete tasks
